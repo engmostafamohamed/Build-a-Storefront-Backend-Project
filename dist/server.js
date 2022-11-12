@@ -7,16 +7,21 @@ var express_1 = __importDefault(require("express"));
 var morgan_1 = __importDefault(require("morgan"));
 var helmet_1 = __importDefault(require("helmet"));
 var config_1 = __importDefault(require("./config"));
+var cors_1 = __importDefault(require("cors"));
+var routes_1 = __importDefault(require("./routes"));
 // import db from "./database"
 var PORT = config_1["default"].port || 3000;
 var app = (0, express_1["default"])();
 // console.log(config);
+app.use((0, cors_1["default"])());
 // http login middleware
 app.use((0, morgan_1["default"])('common'));
 //http security middleware
 app.use((0, helmet_1["default"])());
 // middleware to parse request
 app.use(express_1["default"].json());
+//create api
+app.use('/api', routes_1["default"]);
 // start express server
 app.listen(PORT, function () {
     console.log("Server is starting at :".concat(PORT));
