@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var express_1 = require("express");
 var users_1 = __importDefault(require("./api/users"));
+var orders_1 = __importDefault(require("./api/orders"));
 var routes = (0, express_1.Router)();
 routes.use('/user', users_1["default"]);
+routes.use('/orders', orders_1["default"]);
 exports["default"] = routes;
