@@ -1,55 +1,55 @@
 import { Request, Response } from "express";
 import OrderStore from "../model/orders";
 const orderStore = new OrderStore();
-export const allOrders = async (_req: Request, res: Response,) => {
+const allOrders = async (req: Request, res: Response,) => {
     try {
-        const orders = await orderStore.index();
-        res.json({
+        const orders = await orderStore.getAll();
+        return res.json({
             status: "success",
             data: orders,
-            message: "orders Retrieved Succesfully"
+            message: "get all orders  Succesfully"
         })
     } catch (error) {
         console.error(error);
     }
 }
-export const createOrders = async (req: Request, res: Response,) => {
+const createOrder = async (req: Request, res: Response) => {
     try {
         const orders = await orderStore.create(req.body);
-        res.json({
-            status: "success",
-            data: { ...orders },
-            message: "Order created Succesfully"
-        })
-    } catch (error) {
-        console.error(error);
-    }
-}
-export const oneOrders = async (req: Request, res: Response,) => {
-    try {
-        const orders = await orderStore.show(req.params.id);
-        res.json({
+        return res.json({
             status: "success",
             data: orders,
-            message: "Order Retrieved Succesfully"
+            message: "orders created  Succesfully"
         })
     } catch (error) {
         console.error(error);
     }
 }
-export const updateOrders = async (req: Request, res: Response,) => {
+const oneOrders = async (req: Request, res: Response) => {
+    try {
+        const orders = await orderStore.getOne(req.params.id);
+        return res.json({
+            status: "success",
+            data: orders,
+            message: "get one orders  Succesfully"
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+const updateOrders = async (req: Request, res: Response) => {
     try {
         const orders = await orderStore.update(req.body, req.params.id);
         res.json({
             status: "success",
             data: orders,
-            message: "Order Retrieved Succesfully"
+            message: "Order updated"
         })
     } catch (error) {
         console.error(error);
     }
 }
-export const deleteOrder = async (req: Request, res: Response) => {
+const deleteOrder = async (req: Request, res: Response) => {
     try {
         const user = await orderStore.delete(req.params.id);
         return res.status(200).json(
@@ -61,17 +61,25 @@ export const deleteOrder = async (req: Request, res: Response) => {
         console.error(error);
     }
 }
-export const addProduct = async (req: Request, res: Response) => {
+const addProduct = async (req: Request, res: Response) => {
     try {
         const orderId: string = req.params.id;
         const productId: string = req.body.productId;
         const addedProduct = await orderStore.addProduct(orderId, productId);
-        res.json({
+        return res.json({
             status: "success",
             data: addedProduct,
-            message: "Order Retrieved Succesfully"
+            message: "Order created"
         })
     } catch (error) {
         console.error(error);
     }
+}
+export {
+    allOrders,
+    createOrder,
+    oneOrders,
+    updateOrders,
+    deleteOrder,
+    addProduct
 }

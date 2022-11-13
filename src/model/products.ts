@@ -8,7 +8,7 @@ export type Product = {
 }
 
 export default class ProductStore {
-    async index(): Promise<Product[]> {
+    async all(): Promise<Product[]> {
         try {
             const conn = await db.connect();
             const sql = `SELECT * FROM products`;
@@ -19,7 +19,7 @@ export default class ProductStore {
             throw new Error("unable get all products:${err}")
         }
     }
-    async show(id: string): Promise<Product> {
+    async one(id: string): Promise<Product> {
         try {
             const conn = await db.connect();
             const sql = `SELECT * FROM products WHERE id=($1)`;

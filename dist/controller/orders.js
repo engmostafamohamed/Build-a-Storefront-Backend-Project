@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50,24 +39,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.addProduct = exports.deleteOrder = exports.updateOrders = exports.oneOrders = exports.createOrders = exports.allOrders = void 0;
+exports.addProduct = exports.deleteOrder = exports.updateOrders = exports.oneOrders = exports.createOrder = exports.allOrders = void 0;
 var orders_1 = __importDefault(require("../model/orders"));
 var orderStore = new orders_1["default"]();
-var allOrders = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var allOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var orders, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore.index()];
+                return [4 /*yield*/, orderStore.getAll()];
             case 1:
                 orders = _a.sent();
-                res.json({
-                    status: "success",
-                    data: orders,
-                    message: "orders Retrieved Succesfully"
-                });
-                return [3 /*break*/, 3];
+                return [2 /*return*/, res.json({
+                        status: "success",
+                        data: orders,
+                        message: "get all orders  Succesfully"
+                    })];
             case 2:
                 error_1 = _a.sent();
                 console.error(error_1);
@@ -77,7 +65,7 @@ var allOrders = function (_req, res) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.allOrders = allOrders;
-var createOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var createOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var orders, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -86,12 +74,11 @@ var createOrders = function (req, res) { return __awaiter(void 0, void 0, void 0
                 return [4 /*yield*/, orderStore.create(req.body)];
             case 1:
                 orders = _a.sent();
-                res.json({
-                    status: "success",
-                    data: __assign({}, orders),
-                    message: "Order created Succesfully"
-                });
-                return [3 /*break*/, 3];
+                return [2 /*return*/, res.json({
+                        status: "success",
+                        data: orders,
+                        message: "orders created  Succesfully"
+                    })];
             case 2:
                 error_2 = _a.sent();
                 console.error(error_2);
@@ -100,22 +87,21 @@ var createOrders = function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
-exports.createOrders = createOrders;
+exports.createOrder = createOrder;
 var oneOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var orders, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore.show(req.params.id)];
+                return [4 /*yield*/, orderStore.getOne(req.params.id)];
             case 1:
                 orders = _a.sent();
-                res.json({
-                    status: "success",
-                    data: orders,
-                    message: "Order Retrieved Succesfully"
-                });
-                return [3 /*break*/, 3];
+                return [2 /*return*/, res.json({
+                        status: "success",
+                        data: orders,
+                        message: "get one orders  Succesfully"
+                    })];
             case 2:
                 error_3 = _a.sent();
                 console.error(error_3);
@@ -137,7 +123,7 @@ var updateOrders = function (req, res) { return __awaiter(void 0, void 0, void 0
                 res.json({
                     status: "success",
                     data: orders,
-                    message: "Order Retrieved Succesfully"
+                    message: "Order updated"
                 });
                 return [3 /*break*/, 3];
             case 2:
@@ -181,12 +167,11 @@ var addProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 return [4 /*yield*/, orderStore.addProduct(orderId, productId)];
             case 1:
                 addedProduct = _a.sent();
-                res.json({
-                    status: "success",
-                    data: addedProduct,
-                    message: "Order Retrieved Succesfully"
-                });
-                return [3 /*break*/, 3];
+                return [2 /*return*/, res.json({
+                        status: "success",
+                        data: addedProduct,
+                        message: "Order created"
+                    })];
             case 2:
                 error_6 = _a.sent();
                 console.error(error_6);

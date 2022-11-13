@@ -8,7 +8,7 @@ export type Order = {
 }
 
 export default class OrderStore {
-    async index(): Promise<Order[]> {
+    async getAll(): Promise<Order[]> {
         try {
             const conn = await db.connect();
             const sql = `SELECT * FROM orders`;
@@ -19,7 +19,7 @@ export default class OrderStore {
             throw new Error("unable get all orders:${err}")
         }
     }
-    async show(id: string): Promise<Order> {
+    async getOne(id: string): Promise<Order> {
         try {
             const conn = await db.connect();
             const sql = `SELECT * FROM orders WHERE id=($1)`;

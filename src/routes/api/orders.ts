@@ -5,7 +5,7 @@ const routes = Router();
 //api/order
 routes.route('/')
     .get(verifyAuthToken, orders.allOrders)
-    .post(verifyAuthToken, orders.createOrders)
+    .post(verifyAuthToken, orders.createOrder)
 routes.route("/:id")
     .get(verifyAuthToken, orders.oneOrders)
     .patch(verifyAuthToken, orders.updateOrders)

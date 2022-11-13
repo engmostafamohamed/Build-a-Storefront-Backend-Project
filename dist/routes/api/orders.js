@@ -33,7 +33,7 @@ var routes = (0, express_1.Router)();
 //api/order
 routes.route('/')
     .get(auth_1["default"], orders.allOrders)
-    .post(auth_1["default"], orders.createOrders);
+    .post(auth_1["default"], orders.createOrder);
 routes.route("/:id")
     .get(auth_1["default"], orders.oneOrders)
     .patch(auth_1["default"], orders.updateOrders)["delete"](auth_1["default"], orders.deleteOrder);
