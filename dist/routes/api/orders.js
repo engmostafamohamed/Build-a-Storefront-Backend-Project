@@ -22,18 +22,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 exports.__esModule = true;
 var express_1 = require("express");
 var orders = __importStar(require("../../controller/orders"));
+var auth_1 = __importDefault(require("../../middleware/auth"));
 var routes = (0, express_1.Router)();
 //api/order
 routes.route('/')
-    .get(orders.allOrders)
-    .post(orders.createOrders);
+    .get(auth_1["default"], orders.allOrders)
+    .post(auth_1["default"], orders.createOrders);
 routes.route("/:id")
-    .get(orders.oneOrders)
-    .patch(orders.updateOrders)["delete"](orders.deleteOrder);
+    .get(auth_1["default"], orders.oneOrders)
+    .patch(auth_1["default"], orders.updateOrders)["delete"](auth_1["default"], orders.deleteOrder);
 //add product
 routes.route('/:id/products')
-    .post(orders.addProduct);
+    .post(auth_1["default"], orders.addProduct);
 exports["default"] = routes;
