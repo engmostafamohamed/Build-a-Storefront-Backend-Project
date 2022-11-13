@@ -8,6 +8,7 @@ Show [token required]
 Create [token required]
 update [token required]
 delete [token required]
+
 Users
 Index [token required]
 Show [token required]
@@ -15,6 +16,7 @@ Create
 Update [token required]
 Delete [token required]
 Orders
+
 Index [token required]
 Show [token required]
 Create [token required]
@@ -22,17 +24,21 @@ Update [token required]
 Delete [token required]
 Add Product [token required]
 [OPTIONAL] Completed Orders by user (args: user id)[token required]
+
 Data Shapes
+
 products
 id
 name
 price
 [OPTIONAL] category
+
 users
 id
 firstName
 lastName
 password
+
 orders
 id
 id of each product in the order
