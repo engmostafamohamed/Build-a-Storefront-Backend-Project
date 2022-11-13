@@ -3,10 +3,10 @@ import ProductStore from "../model/products";
 const productStore = new ProductStore();
 const allProducts = async (req: Request, res: Response,) => {
     try {
-        const allproducts = await productStore.all();
+        const allProducts = await productStore.all();
         return res.json({
             status: "success",
-            data: allproducts,
+            data: allProducts,
             message: "get all products "
         })
     } catch (error) {
@@ -27,10 +27,10 @@ const createProduct = async (req: Request, res: Response,) => {
 }
 const oneProduct = async (req: Request, res: Response,) => {
     try {
-        const products = await productStore.one(req.params.id);
+        const oneProduct = await productStore.one(req.params.id);
         return res.json({
             status: "success",
-            data: products,
+            data: oneProduct,
             message: "get One Product"
         })
     } catch (error) {
@@ -39,10 +39,10 @@ const oneProduct = async (req: Request, res: Response,) => {
 }
 const updateProducts = async (req: Request, res: Response,) => {
     try {
-        const products = await productStore.update(req.body, req.params.id);
+        const updateproduct = await productStore.update(req.body, req.params.id);
         return res.json({
             status: "success",
-            data: products,
+            data: updateproduct,
             message: "Product updated"
         })
     } catch (error) {

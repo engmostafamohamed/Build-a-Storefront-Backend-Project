@@ -43,17 +43,17 @@ exports.addProduct = exports.deleteOrder = exports.updateOrders = exports.oneOrd
 var orders_1 = __importDefault(require("../model/orders"));
 var orderStore = new orders_1["default"]();
 var allOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_1;
+    var allOrders_1, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, orderStore.getAll()];
             case 1:
-                orders = _a.sent();
+                allOrders_1 = _a.sent();
                 return [2 /*return*/, res.json({
                         status: "success",
-                        data: orders,
+                        data: allOrders_1,
                         message: "get all orders  Succesfully"
                     })];
             case 2:
@@ -89,17 +89,17 @@ var createOrder = function (req, res) { return __awaiter(void 0, void 0, void 0,
 }); };
 exports.createOrder = createOrder;
 var oneOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_3;
+    var oneOrder, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, orderStore.getOne(req.params.id)];
             case 1:
-                orders = _a.sent();
+                oneOrder = _a.sent();
                 return [2 /*return*/, res.json({
                         status: "success",
-                        data: orders,
+                        data: oneOrder,
                         message: "get one orders  Succesfully"
                     })];
             case 2:
@@ -112,20 +112,19 @@ var oneOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, f
 }); };
 exports.oneOrders = oneOrders;
 var updateOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_4;
+    var updateOrder, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, orderStore.update(req.body, req.params.id)];
             case 1:
-                orders = _a.sent();
-                res.json({
-                    status: "success",
-                    data: orders,
-                    message: "Order updated"
-                });
-                return [3 /*break*/, 3];
+                updateOrder = _a.sent();
+                return [2 /*return*/, res.json({
+                        status: "success",
+                        data: updateOrder,
+                        message: "Order updated"
+                    })];
             case 2:
                 error_4 = _a.sent();
                 console.error(error_4);
@@ -136,15 +135,15 @@ var updateOrders = function (req, res) { return __awaiter(void 0, void 0, void 0
 }); };
 exports.updateOrders = updateOrders;
 var deleteOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, error_5;
+    var error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, orderStore["delete"](req.params.id)];
             case 1:
-                user = _a.sent();
-                return [2 /*return*/, res.status(200).json({
+                _a.sent();
+                return [2 /*return*/, res.json({
                         message: "User deleted Succesfully"
                     })];
             case 2:

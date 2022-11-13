@@ -3,10 +3,10 @@ import OrderStore from "../model/orders";
 const orderStore = new OrderStore();
 const allOrders = async (req: Request, res: Response,) => {
     try {
-        const orders = await orderStore.getAll();
+        const allOrders = await orderStore.getAll();
         return res.json({
             status: "success",
-            data: orders,
+            data: allOrders,
             message: "get all orders  Succesfully"
         })
     } catch (error) {
@@ -27,10 +27,10 @@ const createOrder = async (req: Request, res: Response) => {
 }
 const oneOrders = async (req: Request, res: Response) => {
     try {
-        const orders = await orderStore.getOne(req.params.id);
+        const oneOrder = await orderStore.getOne(req.params.id);
         return res.json({
             status: "success",
-            data: orders,
+            data: oneOrder,
             message: "get one orders  Succesfully"
         })
     } catch (error) {
@@ -39,10 +39,10 @@ const oneOrders = async (req: Request, res: Response) => {
 }
 const updateOrders = async (req: Request, res: Response) => {
     try {
-        const orders = await orderStore.update(req.body, req.params.id);
-        res.json({
+        const updateOrder = await orderStore.update(req.body, req.params.id);
+        return res.json({
             status: "success",
-            data: orders,
+            data: updateOrder,
             message: "Order updated"
         })
     } catch (error) {
@@ -51,8 +51,8 @@ const updateOrders = async (req: Request, res: Response) => {
 }
 const deleteOrder = async (req: Request, res: Response) => {
     try {
-        const user = await orderStore.delete(req.params.id);
-        return res.status(200).json(
+        await orderStore.delete(req.params.id);
+        return res.json(
             {
                 message: "User deleted Succesfully"
             }

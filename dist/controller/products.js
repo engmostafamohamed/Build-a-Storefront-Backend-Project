@@ -43,17 +43,17 @@ exports.deleteProduct = exports.updateProducts = exports.oneProduct = exports.cr
 var products_1 = __importDefault(require("../model/products"));
 var productStore = new products_1["default"]();
 var allProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var allproducts, error_1;
+    var allProducts_1, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, productStore.all()];
             case 1:
-                allproducts = _a.sent();
+                allProducts_1 = _a.sent();
                 return [2 /*return*/, res.json({
                         status: "success",
-                        data: allproducts,
+                        data: allProducts_1,
                         message: "get all products "
                     })];
             case 2:
@@ -89,17 +89,17 @@ var createProduct = function (req, res) { return __awaiter(void 0, void 0, void 
 }); };
 exports.createProduct = createProduct;
 var oneProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var products, error_3;
+    var oneProduct_1, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, productStore.one(req.params.id)];
             case 1:
-                products = _a.sent();
+                oneProduct_1 = _a.sent();
                 return [2 /*return*/, res.json({
                         status: "success",
-                        data: products,
+                        data: oneProduct_1,
                         message: "get One Product"
                     })];
             case 2:
@@ -112,17 +112,17 @@ var oneProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, 
 }); };
 exports.oneProduct = oneProduct;
 var updateProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var products, error_4;
+    var updateproduct, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, productStore.update(req.body, req.params.id)];
             case 1:
-                products = _a.sent();
+                updateproduct = _a.sent();
                 return [2 /*return*/, res.json({
                         status: "success",
-                        data: products,
+                        data: updateproduct,
                         message: "Product updated"
                     })];
             case 2:
