@@ -61,3 +61,17 @@ export const deleteOrder = async (req: Request, res: Response) => {
         console.error(error);
     }
 }
+export const addProduct = async (req: Request, res: Response) => {
+    try {
+        const orderId: string = req.params.id;
+        const productId: string = req.body.productId;
+        const addedProduct = await orderStore.addProduct(orderId, productId);
+        res.json({
+            status: "success",
+            data: addedProduct,
+            message: "Order Retrieved Succesfully"
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}

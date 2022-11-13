@@ -50,22 +50,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.addProduct = exports.deleteOrder = exports.updateOrders = exports.oneOrders = exports.createOrders = exports.allOrders = void 0;
-var orders_1 = __importDefault(require("../model/orders"));
-var orderStore = new orders_1["default"]();
-var allOrders = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_1;
+exports.deleteProduct = exports.updateProducts = exports.oneProduct = exports.createProduct = exports.allProducts = void 0;
+var products_1 = __importDefault(require("../model/products"));
+var productStore = new products_1["default"]();
+var allProducts = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var products, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore.index()];
+                return [4 /*yield*/, productStore.index()];
             case 1:
-                orders = _a.sent();
+                products = _a.sent();
                 res.json({
                     status: "success",
-                    data: orders,
-                    message: "orders Retrieved Succesfully"
+                    data: products,
+                    message: "products Retrieved Succesfully"
                 });
                 return [3 /*break*/, 3];
             case 2:
@@ -76,20 +76,20 @@ var allOrders = function (_req, res) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); };
-exports.allOrders = allOrders;
-var createOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_2;
+exports.allProducts = allProducts;
+var createProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var Product, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore.create(req.body)];
+                return [4 /*yield*/, productStore.create(req.body)];
             case 1:
-                orders = _a.sent();
+                Product = _a.sent();
                 res.json({
                     status: "success",
-                    data: __assign({}, orders),
-                    message: "Order created Succesfully"
+                    data: __assign({}, Product),
+                    message: "Product created Succesfully"
                 });
                 return [3 /*break*/, 3];
             case 2:
@@ -100,20 +100,20 @@ var createOrders = function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
-exports.createOrders = createOrders;
-var oneOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_3;
+exports.createProduct = createProduct;
+var oneProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var products, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore.show(req.params.id)];
+                return [4 /*yield*/, productStore.show(req.params.id)];
             case 1:
-                orders = _a.sent();
+                products = _a.sent();
                 res.json({
                     status: "success",
-                    data: orders,
-                    message: "Order Retrieved Succesfully"
+                    data: products,
+                    message: "Product Retrieved Succesfully"
                 });
                 return [3 /*break*/, 3];
             case 2:
@@ -124,20 +124,20 @@ var oneOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); };
-exports.oneOrders = oneOrders;
-var updateOrders = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orders, error_4;
+exports.oneProduct = oneProduct;
+var updateProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var products, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore.update(req.body, req.params.id)];
+                return [4 /*yield*/, productStore.update(req.body, req.params.id)];
             case 1:
-                orders = _a.sent();
+                products = _a.sent();
                 res.json({
                     status: "success",
-                    data: orders,
-                    message: "Order Retrieved Succesfully"
+                    data: products,
+                    message: "Product Retrieved Succesfully"
                 });
                 return [3 /*break*/, 3];
             case 2:
@@ -148,18 +148,18 @@ var updateOrders = function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
-exports.updateOrders = updateOrders;
-var deleteOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, error_5;
+exports.updateProducts = updateProducts;
+var deleteProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var product, error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, orderStore["delete"](req.params.id)];
+                return [4 /*yield*/, productStore["delete"](req.params.id)];
             case 1:
-                user = _a.sent();
+                product = _a.sent();
                 return [2 /*return*/, res.status(200).json({
-                        message: "User deleted Succesfully"
+                        message: "Product deleted Succesfully"
                     })];
             case 2:
                 error_5 = _a.sent();
@@ -169,30 +169,4 @@ var deleteOrder = function (req, res) { return __awaiter(void 0, void 0, void 0,
         }
     });
 }); };
-exports.deleteOrder = deleteOrder;
-var addProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orderId, productId, addedProduct, error_6;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                orderId = req.params.id;
-                productId = req.body.productId;
-                return [4 /*yield*/, orderStore.addProduct(orderId, productId)];
-            case 1:
-                addedProduct = _a.sent();
-                res.json({
-                    status: "success",
-                    data: addedProduct,
-                    message: "Order Retrieved Succesfully"
-                });
-                return [3 /*break*/, 3];
-            case 2:
-                error_6 = _a.sent();
-                console.error(error_6);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
-exports.addProduct = addProduct;
+exports.deleteProduct = deleteProduct;

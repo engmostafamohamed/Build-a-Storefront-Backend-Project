@@ -33,4 +33,7 @@ routes.route('/')
 routes.route("/:id")
     .get(orders.oneOrders)
     .patch(orders.updateOrders)["delete"](orders.deleteOrder);
+//add product
+routes.route('/:id/products')
+    .post(orders.addProduct);
 exports["default"] = routes;

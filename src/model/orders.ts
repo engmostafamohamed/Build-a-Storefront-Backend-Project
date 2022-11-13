@@ -55,7 +55,6 @@ export default class OrderStore {
     }
     async delete(id: string): Promise<Order> {
         try {
-            console.log(id)
             const conn = await db.connect();
             const sql = `DELETE FROM orders WHERE id=($1)`;
             const result = await conn.query(sql, [id]);
@@ -63,6 +62,17 @@ export default class OrderStore {
             return result.rows[0]
         } catch (error) {
             throw new Error("Could not delte order:${err}")
+        }
+    }
+    async addProduct(order_id: string, product_id: string): Promise<Order> {
+        try {
+            const conn = await db.connect();
+            const sql = `INSERT INTO orders_products(orders_id,products_id) VALUES($1,$2)RETURNING *`;
+            const result = await conn.query(sql, [order_id, product_id]);
+            conn.release()
+            return result.rows[0]
+        } catch (error) {
+            throw new Error("Could not add product to order:${err}")
         }
     }
 }
