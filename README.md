@@ -6,11 +6,25 @@ Required Technologies
 -controller for all models
 -route in index and api contain user,orders,product api
 
-1. Plan to Meet Requirements
-2. DB Creation and Migrations
-3. Models
-4. Express Handlers
-5. JWTs
+Setup Database
+db-migrate create users-table --sql-file
+db-migrate create orders-table --sql-file
+db-migrate create products-table --sql-file
+db-migrate create orders_products-table --sql-file
+
+my Enviroment Variable
+PORT=3000
+NODE_ENV=dev
+
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=project
+POSTGRES_DB_TEST=project_test
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=hr
+BCRYPT_PASSWORD=udacity-project
+SALT_ROUNDS=10
+TOKEN_SECRET=your-secret-token
 
 API FORMATER
 -Users
@@ -47,3 +61,7 @@ how to test by jasmine
 -npm run test
 how to run prettier
 -npm run format
+how to create all tables in database
+-db-migrate up
+how to Drop all tables in database
+-db-migrate down
